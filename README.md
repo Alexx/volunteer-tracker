@@ -6,7 +6,7 @@
 
 ## Description
 
-_This is an application that uses a database to stores projects and assigns volunteers to each project. This project is mainly to practice CRUD functionality._
+_This is an application that uses a database to store projects and assigns volunteers to each project. This project is mainly to practice CRUD functionality._
 
 ## Setup/Installation
 
