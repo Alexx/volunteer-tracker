@@ -1,20 +1,37 @@
 <h2 class="text-center"><%= @project.title %></h2>
+
 <div class="card">
   <div class="card-header">
     <h3>Project Volunteers</h3>
   </div>
   <div class="card-body">
-    <% if @project.volunteers %>
-    <ul>
+    <div class="row">
+      <% if @project.volunteers %>
       <% @project.volunteers.each do |volunteer| %>
-      <li><a href="/projects/<%= @project.id %>/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
+      <div class="col-md-3">
+        <div class="card">
+          <a href="/projects/<%= @project.id %>/volunteers/<%= volunteer.id %>"><img class="card-img-top" src="/img/default.png" alt="Picture of <%= volunteer.name %>"></a>
+          <div class="card-body">
+            <div class="card-title">
+              <h3 class="text-center"><a href="/projects/<%= @project.id %>/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></h3>
+            </div>
+            <hr>
+          </div>
+          <div class="card-body">
+            <form class="" action="/projects/<%= @project.id %>/volunteers/<%= volunteer.id %>">
+              <button class="btn btn-primary text-center" type="submit" name="button">Edit</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
       <% end %>
-    </ul>
-    <% else %>
-    <p>There are no volunteers listed for this project yet.</p>
-    <% end %>
+      <% else %>
+      <p>There are no volunteers listed for this project yet.</p>
+    </div>
   </div>
 </div>
+<% end %>
 
 <div class="card">
   <div class="card-header">
