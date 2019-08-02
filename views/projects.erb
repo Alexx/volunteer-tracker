@@ -1,34 +1,77 @@
-<div class="card">
-  <div class="card-header">
-    <h3>All current projects</h3>
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h3>All current projects</h3>
+      </div>
+      <div class="card-body">
+        <% if @projects.any? %>
+        <ul>
+          <% @projects.each do |project| %>
+          <li><a href="/projects/<%= project.id %>"><%= project.title %></a></li>
+          <% end %>
+        </ul>
+        <% else %>
+        <p>There are no projects to display.</p>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-    <% if @projects.any? %>
-    <ul>
-      <% @projects.each do |project| %>
-      <li><a href="/projects/<%= project.id %>"><%= project.title %></a></li>
-      <% end %>
-    </ul>
-
-    <% else %>
-    <p>There are no projects to display.</p>
-    <% end %>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h3>Add a new project</h3>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <form action="/projects" method="post">
+            <div class="form-group">
+              <label for="project_name">Project title</label>
+              <input name="title" class="form-control" type="text">
+            </div>
+            <button class="btn btn-primary profile-btn" type="submit">Create Project</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="card">
-  <div class="card-header">
-    <h3>Add a new project</h3>
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h3>All current volunteers</h3>
+      </div>
+      <div class="card-body">
+        <% if @volunteers.any? %>
+        <ul>
+          <% @volunteers.each do |volunteer| %>
+          <li><a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
+          <% end %>
+        </ul>
+        <% else %>
+        <p>There are no volunteers to display.</p>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-    <div class="form-group">
-      <form action="/projects" method="post">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h3>Add a new volunteer</h3>
+      </div>
+      <div class="card-body">
         <div class="form-group">
-          <label for="project_name">Project title</label>
-          <input name="title" class="form-control" type="text">
+          <form action="/projects/volunteers/new" method="post">
+            <div class="form-group">
+              <label for="volunteer_name">Volunteer Name</label>
+              <input id="volunteer_name" name="volunteer_name" class="form-control" type="text">
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </form>
         </div>
-        <button class="btn btn-primary" type="submit" class="btn">Create Project</button>
-      </form>
+      </div>
     </div>
   </div>
 </div>

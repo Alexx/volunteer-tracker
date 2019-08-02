@@ -26,6 +26,8 @@ _SQL_
 
 _HTML_
 
+_CSS_
+
 ## Licensing
 
 MIT License
