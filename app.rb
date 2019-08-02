@@ -76,6 +76,14 @@ post ('/projects/:id/volunteers') do
   erb :project
 end
 
+post ('/projects/:id/volunteers/:volunteer/remove') do
+  @project = Project.find(params[:id].to_i)
+  volunteer = Volunteer.find(params[:volunteer].to_i)
+  volunteer.reset_project
+  @volunteers = Volunteer.all_unassigned
+  erb :project
+end
+
 post ('/projects/volunteers/new') do
   volunteer = Volunteer.new({:name => params[:volunteer_name], :project_id => 0, :id => nil})
   volunteer.save

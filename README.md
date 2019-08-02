@@ -12,7 +12,15 @@ _This is an application that uses a database to stores projects and assigns volu
 
 Step 1: Clone this repository to your desktop
 
-Step 2: In terminal, within the project directory, type bundle install
+Step 2: In terminal, within the project directory, type 'bundle install'
+
+Step 3: Create database from backup
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3A: In terminal, type 'createdb volunteer_tracker'
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3B: In terminal, type 'psql volunteer_tracker < database_backup.sql'
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3C: In terminal, type 'createdb -T volunteer_tracker volunteer_tracker_test'
 
 ## Technologies Used
 
