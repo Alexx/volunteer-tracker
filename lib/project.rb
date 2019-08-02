@@ -34,8 +34,8 @@ class Project
     @id = result.first().fetch("id").to_i
   end
 
-  def update(project)
-    @title = project.fetch(:title)
+  def update(title)
+    @title = title
     DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
   end
 
