@@ -1,0 +1,11 @@
+h1 {
+  font-family: 'Fascinate', cursive;
+}
+
+body {
+  background-color: lightgrey;
+  font-family: 'Rubik', sans-serif;
+}
+.card {
+  margin-bottom: 16px;
+}
