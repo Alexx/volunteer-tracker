@@ -17,6 +17,12 @@ get ('/projects') do
   erb :projects
 end
 
+post('/projects/search') do
+  search_input = params[:search]
+  @results = Project.search(search_input)
+  erb :search_results
+end
+
 get ('/projects/new') do
   erb :new_project
 end
