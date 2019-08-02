@@ -8,22 +8,21 @@
       </div>
       <div class="card-body">
         <div class="form-group">
+          <% if @volunteers.any? %>
           <form action="/projects/<%= @project.id %>/volunteers" method="post">
             <div class="form-group">
               <label for="volunteer">Select a volunteer</label>
-              <select name="volunteer">
-                <% if @volunteers.any? %>
+              <select class="form-control" name="volunteer">
                 <% @volunteers.each do |volunteer| %>
                 <option value="<%= volunteer.id %>"><%= volunteer.name %></option>
                 <% end %>
               </select>
-              <% else %>
-              <p>No available volunteers.</p>
-              <% end %>
-              <button type="submit" name="Rent">Rent</button>
             </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">Assign</button>
           </form>
+          <% else %>
+          <p>No volunteers available.</p>
+          <% end %>
         </div>
         <p><a href="/projects/<%= @project.id %>/edit">Edit Project</a></p>
         <p><a href="/projects">Return to project list</a></p>
@@ -40,7 +39,6 @@
       </div>
       <div class="card-body">
         <div class="row">
-          <% if @project.volunteers %>
           <% @project.volunteers.each do |volunteer| %>
           <div class="col-md-3">
             <div class="card">
@@ -58,9 +56,6 @@
               </div>
             </div>
           </div>
-          <% end %>
-          <% else %>
-          <p>There are no volunteers listed for this project yet.</p>
           <% end %>
         </div>
       </div>

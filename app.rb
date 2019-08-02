@@ -41,6 +41,7 @@ get ('/volunteers/:id') do
 end
 
 get ('/projects/:id') do
+  @volunteers = Volunteer.all_unassigned
   @project = Project.find(params[:id].to_i)
   erb :project
 end
@@ -68,10 +69,10 @@ get ('/projects/:id/volunteers/:volunteer_id') do
 end
 
 post ('/projects/:id/volunteers') do
-  @volunteers = Volunteer.all
   @project = Project.find(params[:id].to_i)
-  # volunteer = Volunteer.new({:name => params[:volunteer_name], :project_id => @project.id, :id => nil})
-  # volunteer.save
+  volunteer = Volunteer.find(params[:volunteer].to_i)
+  volunteer.update(volunteer.name, @project.id)
+  @volunteers = Volunteer.all_unassigned
   erb :project
 end
 
@@ -82,7 +83,6 @@ post ('/projects/volunteers/new') do
 end
 
 patch ('/volunteers/:volunteer_id') do
-  # @project = Project.find(params[:id].to_i)
   volunteer = Volunteer.find(params[:volunteer_id].to_i)
   volunteer.update(params[:name], volunteer.project_id)
   redirect '/projects'
@@ -91,6 +91,5 @@ end
 delete ('/volunteers/:volunteer_id') do
   volunteer = Volunteer.find(params[:volunteer_id].to_i)
   volunteer.delete
-  # @project = Project.find(params[:id].to_i)
   redirect '/projects'
 end
