@@ -18,6 +18,13 @@ class Project
     projects
   end
 
+  def self.find(id)
+    project = DB.exec("SELECT * FROM projects WHERE id = #{id};").first
+    title = project.fetch("title")
+    id = project.fetch("id")
+    Project.new({:title => title, :id => id})
+  end
+
   def ==(project_to_compare)
     self.title == project_to_compare.title
   end
@@ -26,4 +33,10 @@ class Project
     result = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id;")
     @id = result.first().fetch("id").to_i
   end
+
+  def delete
+    DB.exec("DELETE FROM projects WHERE id = #{@id};")
+    DB.exec("DELETE FROM volunteers WHERE project_id = #{@id};")
+  end
+
 end
