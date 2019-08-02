@@ -8,7 +8,7 @@
     <label for="name">Rename volunteer</label>
     <input class="form-control" id="name" name="name" type="text">
 
-    <button class="btn btn-primary" type="submit">Update</button>
+    <button class="btn btn-primary" type="submit">Update Volunteer</button>
   </form>
 </div>
 
@@ -16,7 +16,7 @@
   <form action="/projects/<%= @volunteer.project.id %>/volunteers/<%= @volunteer.id %>" method="post">
     <input name="_method" type="hidden" value="delete">
 
-    <button class="btn btn-primary" type="submit">Delete</button>
+    <button class="btn btn-primary" type="submit">Delete Volunteer</button>
   </form>
 </div>
 

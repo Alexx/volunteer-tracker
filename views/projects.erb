@@ -23,4 +23,14 @@
   <p>There are no projects to display.</p>
 <% end %>
 
-<a href="/projects/new">Add a new project</a>
+<h3>Add a new project</h3>
+
+<div class="form-group">
+  <form action="/projects" method="post">
+    <div class="form-group">
+      <label for="project_name">Project title</label>
+      <input name="title" class="form-control" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit" class="btn">Create Project</button>
+  </form>
+</div>
