@@ -34,9 +34,18 @@ class Project
     @id = result.first().fetch("id").to_i
   end
 
+  def update(project)
+    @title = project.fetch(:title)
+    DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
+  end
+
   def delete
     DB.exec("DELETE FROM projects WHERE id = #{@id};")
     DB.exec("DELETE FROM volunteers WHERE project_id = #{@id};")
+  end
+
+  def volunteers
+    Volunteer.find_by_project(self.id)
   end
 
 end
